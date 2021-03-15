@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "application#welcome"
 
-  get '/home' => "users#home"
+  get '/home' => "users#home", as: :user_root # creates user_root_path
+
+
 
   resources :users, only: [:show]
 end
