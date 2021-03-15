@@ -36,6 +36,13 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def destroy
+    #Ask for verification
+    @quiz = Quiz.find(params[:id])
+    @quiz.destroy
+    redirect_to quizzes_path
+  end
+
   private
 
   def quiz_params

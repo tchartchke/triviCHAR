@@ -5,3 +5,6 @@ Rounds (<%= @quiz.rounds.count %>):
     <%= round.subject %>
   </li>
 <% end %>
+<p>
+  <%= link_to 'Delete Quiz', quiz_path(@quiz), method: :delete %>
+</p>
