@@ -1,0 +1,11 @@
+<h1>Edit Existing Quiz</h1>
+
+<%= form_for @quiz do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.hidden_field :host_id %>
+
+  <%= f.submit %>
+  <%# TODO: PUT IN ERROR MESSAGES ON THIS PAGE %>
+<% end %>

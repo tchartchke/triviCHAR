@@ -23,6 +23,19 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def edit
+    @quiz = Quiz.find(params[:id])
+  end
+
+  def update
+    @quiz = Quiz.find(params[:id])
+    if @quiz.update(quiz_params)
+      redirect_to quiz_path(@quiz)
+    else
+      redirect_to edit_quiz_path(@quiz)
+    end
+  end
+
   private
 
   def quiz_params
