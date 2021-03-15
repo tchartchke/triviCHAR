@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  def home
+  before_action :authenticate_user!
 
+  def home
+    @user = current_user
   end
 
   def show
