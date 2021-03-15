@@ -1,0 +1,9 @@
+<h1>Quiz Index. Should only have the quizzes by current user</h1>
+<p>
+  <%= link_to 'Create a new Quiz', new_quiz_path %>
+</p>
+<% @quizzes.each do |quiz| %>
+<li>
+  <%= quiz.title %>
+</li>
+<% end %>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :answers
-  resources :questions
-  resources :rounds
-  resources :quizzes
+  # resources :answers
+  # resources :questions
+  # resources :rounds
+  resources :quizzes, only: [:show, :index, :new, :create]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions'  }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
