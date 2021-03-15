@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
+  # TODO: Create before_action to check that current user is host of quiz for only [show, edit, update, delete]
 
   def show
     @quiz = Quiz.find(params[:id])

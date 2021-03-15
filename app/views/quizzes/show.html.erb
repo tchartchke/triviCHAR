@@ -1,1 +1,7 @@
-<h1>THIS IS THE QUIZ! YOU CAN SEE IT HERE! EVENTUALLY. </h1>
+<h1><%= @quiz.title %> </h1>
+Rounds (<%= @quiz.rounds.count %>):
+<% @quiz.rounds.each do |round| %>
+  <li>
+    <%= round.subject %>
+  </li>
+<% end %>
