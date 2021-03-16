@@ -1,8 +1,4 @@
 class QuestionsController < ApplicationController
-  # def new
-  #   @round = Round.find(params[:round_id])
-  #   @question = Question.new(round_id: params[:round_id])
-  # end
 
   def create
     @question = Question.new(question_params)
@@ -21,6 +17,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:question, :round_id)
+    params.require(:question).permit( :question, :round_id, answer_attributes: [ :answer ] )
   end
 end

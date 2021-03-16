@@ -1,7 +1,9 @@
 class Question < ApplicationRecord
   belongs_to :round
-  has_many :answers
-  accepts_nested_attributes_for :answers
+  has_one :answer
+  accepts_nested_attributes_for :answer#, allow_destroy: true
 
+
+  #TODO: propgate destroy
   validates :question, presence: true
 end

@@ -13,6 +13,7 @@ class RoundsController < ApplicationController
   def edit
     @round = Round.find(params[:id])
     @question = Question.new(round_id: params[:id])
+    @question.build_answer
   end
 
   def update

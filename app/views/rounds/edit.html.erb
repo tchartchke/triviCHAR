@@ -10,19 +10,26 @@
 <h2>Questions/Answers:</h2>
 <p>
   <%= form_for [@round, @question] do |f| %>
+    <%= f.hidden_field :round_id %>
     <%= f.label :question %>
     <%= f.text_field :question %>
-
-    <%= f.hidden_field :round_id %>
-
+    <%= f.fields_for :answer do |answer| %>
+      <%= answer.label :answer %>
+      <%= answer.text_field :answer %>
+    <% end %>
+    <br>
     <%= f.submit %>
     <%# TODO: PUT IN ERROR MESSAGES ON THIS PAGE %>
   <% end %>
 </p>
+
 <ol>
   <% @round.questions.each do |question| %>
     <li>
       <%= question.question %>
+      <% if !question.answer.nil? %>
+        <%= "=> #{question.answer.answer}"%>
+      <% end %>
     </li>
   <% end %>
 </ol>
