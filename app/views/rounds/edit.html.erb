@@ -8,7 +8,17 @@
   <%= f.submit 'Rename Round' %>
 <% end %>
 <h2>Questions/Answers:</h2>
-<%= link_to 'Add new set of question/answers', new_round_question_path(@round) %>
+<p>
+  <%= form_for [@round, @question] do |f| %>
+    <%= f.label :question %>
+    <%= f.text_field :question %>
+
+    <%= f.hidden_field :round_id %>
+
+    <%= f.submit %>
+    <%# TODO: PUT IN ERROR MESSAGES ON THIS PAGE %>
+  <% end %>
+</p>
 <ol>
   <% @round.questions.each do |question| %>
     <li>
