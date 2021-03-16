@@ -3,7 +3,6 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.save
-    p @question.errors
     redirect_to edit_round_path(question_params[:round_id])
   end
 
@@ -15,11 +14,20 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    # raise 
-    if @question.update(question_params)
-      @question.save
+    @question.question = question_params[:question]
+    if question_params[:answer_attributes][:answer].blank?
+      @question.answer&.destroy
+    else
+      @question.answer_attributes = question_params[:answer_attributes]
     end
+    @question.save
     redirect_to edit_round_path(question_params[:round_id]) #, status 200
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to edit_round_path(question_params[:round_id])
   end
 
   private
