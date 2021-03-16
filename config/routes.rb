@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # resources :questions
   # resources :rounds
   scope :quizzes do
-    resources :rounds, only: [:new, :create, :edit, :update, :destroy]
+    resources :rounds, only: [:create, :edit, :update, :destroy] do
+      resources :questions, only: [:new, :create]
+    end
   end
 
   resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy]

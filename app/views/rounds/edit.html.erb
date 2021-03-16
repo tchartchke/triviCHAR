@@ -8,11 +8,11 @@
   <%= f.submit 'Rename Round' %>
 <% end %>
 <h2>Questions/Answers:</h2>
+<%= link_to 'Add new set of question/answers', new_round_question_path(@round) %>
 <ol>
   <% @round.questions.each do |question| %>
     <li>
-      <%= question.question %><br>
-      <%= @round.answer.answer %>
+      <%= question.question %>
     </li>
   <% end %>
 </ol>
