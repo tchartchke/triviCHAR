@@ -23,6 +23,14 @@ class RoundsController < ApplicationController
     end
   end
 
+  def destroy
+    #Ask for verification
+    round = Round.find(params[:id])
+    quiz = round.quiz
+    round.destroy
+    redirect_to quiz_path(quiz)
+  end
+
   private
 
   def round_params
