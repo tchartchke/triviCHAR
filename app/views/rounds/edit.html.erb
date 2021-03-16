@@ -26,7 +26,7 @@
 <ol>
   <% @round.questions.each do |question| %>
     <li>
-      <%= question.question %>
+      <%= link_to question.question, edit_round_question_path(@round, question) %>
       <% if !question.answer.nil? %>
         <%= "=> #{question.answer.answer}"%>
       <% end %>

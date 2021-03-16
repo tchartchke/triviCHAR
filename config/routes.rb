@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :rounds
   scope :quizzes do
     resources :rounds, only: [:create, :edit, :update, :destroy] do
-      resources :questions, only: [:new, :create]
+      resources :questions, only: [:new, :create, :edit, :update]
     end
   end
 
