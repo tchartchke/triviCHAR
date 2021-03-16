@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    redirect_to edit_round_path(question_params[:round_id])
+    redirect_to edit_round_path(params[:round_id])
   end
 
   private

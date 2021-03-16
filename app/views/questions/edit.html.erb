@@ -11,3 +11,8 @@
   <%= f.submit %>
   <%# TODO: PUT IN ERROR MESSAGES ON THIS PAGE %>
 <% end %>
+
+
+<p>
+  <%= link_to 'Delete Question', round_question_path(@round, @question), method: :delete %>
+</p>
