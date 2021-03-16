@@ -7,4 +7,12 @@
 
   <%= f.submit 'Rename Round' %>
 <% end %>
-
+<h2>Questions/Answers:</h2>
+<ol>
+  <% @round.questions.each do |question| %>
+    <li>
+      <%= question.question %><br>
+      <%= @round.answer.answer %>
+    </li>
+  <% end %>
+</ol>
