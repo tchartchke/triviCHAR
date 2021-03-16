@@ -15,7 +15,7 @@ Rounds (<%= @quiz.rounds.count %>):
 <ol>
 <% @quiz.rounds.each do |round| %>
   <li>
-    <%= link_to round.subject, edit_round_path %><br>
+    <%= link_to round.subject, edit_round_path(round) %><br>
   </li>
 <% end %>
 </ol>

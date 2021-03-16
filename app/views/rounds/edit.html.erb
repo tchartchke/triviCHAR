@@ -1,0 +1,10 @@
+<h1>Edit Round: <%= @round.subject %></h1>
+<%= form_for @round do |f| %>
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+
+  <%= f.hidden_field :quiz_id %>
+
+  <%= f.submit 'Rename Round' %>
+<% end %>
+

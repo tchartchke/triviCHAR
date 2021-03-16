@@ -11,11 +11,16 @@ class RoundsController < ApplicationController
   end
 
   def edit
-
+    @round = Round.find(params[:id])
   end
 
   def update
-    
+    @round = Round.find(params[:id])
+    if @round.update(round_params)
+      redirect_to edit_round_path
+    else
+      redirect_to edit_round_path #show error
+    end
   end
 
   private
