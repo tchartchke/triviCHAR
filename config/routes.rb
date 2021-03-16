@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   # resources :answers
   # resources :questions
   # resources :rounds
+  scope :quizzes do
+    resources :rounds, only: [:new, :create]
+  end
+
   resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions'  }
 

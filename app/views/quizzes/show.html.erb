@@ -1,10 +1,21 @@
 <h1><%= @quiz.title %> </h1>
-Rounds (<%= @quiz.rounds.count %>):
+
+<%= form_for @round do |f| %>
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+
+  <%= f.hidden_field :quiz_id %>
+
+  <%= f.submit %>
+<% end %>
+
+<p>Rounds (<%= @quiz.rounds.count %>):
 <% @quiz.rounds.each do |round| %>
   <li>
     <%= round.subject %>
   </li>
 <% end %>
+</p>
 <p>
   <%= link_to 'Delete Quiz', quiz_path(@quiz), method: :delete %>
 </p>
