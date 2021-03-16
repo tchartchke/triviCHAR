@@ -2,13 +2,14 @@ class QuizzesController < ApplicationController
   before_action :authenticate_user!
   # TODO: Create before_action to check that current user is host of quiz for only [show, edit, update, delete]
 
-  def show
-    @quiz = Quiz.find(params[:id])
-    @round = Round.new(quiz: @quiz)
-  end
 
   def index
     @quizzes = current_user.quizzes
+  end
+  
+  def show
+    @quiz = Quiz.find(params[:id])
+    @round = Round.new(quiz: @quiz)
   end
 
   def new
@@ -20,7 +21,7 @@ class QuizzesController < ApplicationController
     if @quiz.save
       redirect_to quiz_path(@quiz)
     else
-      redirect_to new_quiz_path
+      render :new
     end
   end
 
@@ -33,7 +34,7 @@ class QuizzesController < ApplicationController
     if @quiz.update(quiz_params)
       redirect_to quiz_path(@quiz)
     else
-      redirect_to edit_quiz_path(@quiz)
+      render :edit
     end
   end
 

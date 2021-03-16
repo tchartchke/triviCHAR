@@ -2,8 +2,16 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.save
-    redirect_to edit_round_path(question_params[:round_id])
+    if @question.save
+      redirect_to edit_round_path(question_params[:round_id])
+    else
+      @round = Round.find(params[:round_id])
+      @question = Question.new(round_id: params[:round_id])
+      @question.build_answer
+      render :action => '../rounds/edit'
+
+      # TODO: this doesn't work. error won't show. link redirecting to wrong place. /questions instead of /edit
+    end
   end
 
   def edit
@@ -14,14 +22,19 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    @question.question = question_params[:question]
     if question_params[:answer_attributes][:answer].blank?
       @question.answer&.destroy
     else
       @question.answer_attributes = question_params[:answer_attributes]
     end
-    @question.save
-    redirect_to edit_round_path(question_params[:round_id]) #, status 200
+    @question.question = question_params[:question]
+    if @question.save
+      redirect_to edit_round_path(question_params[:round_id])
+    else
+      @round = Round.find(params[:round_id])
+      @question.build_answer if @question.answer.nil?
+      render :edit
+    end
   end
 
   def destroy

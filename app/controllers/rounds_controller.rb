@@ -6,7 +6,8 @@ class RoundsController < ApplicationController
     if @round.save
       redirect_to quiz_path(@round.quiz)
     else
-      redirect_to quiz_path(@round.quiz) #will have to put error
+      @quiz = Quiz.find(round_params[:quiz_id])
+      render 'quizzes/show'
     end
   end
 
@@ -18,9 +19,14 @@ class RoundsController < ApplicationController
 
   def update
     @round = Round.find(params[:id])
-    @round.update(round_params)
-    redirect_to edit_round_path
-    #Check if render vs redirect and how to handle if update fails. remember to show erros in view
+    if @round.update(round_params)
+      redirect_to edit_round_path
+    else
+      @question = Question.new(round_id: params[:id])
+      @question.build_answer
+      render :edit
+    end
+    
   end
 
   def destroy
