@@ -16,11 +16,9 @@ class RoundsController < ApplicationController
 
   def update
     @round = Round.find(params[:id])
-    if @round.update(round_params)
-      redirect_to edit_round_path
-    else
-      redirect_to edit_round_path #show error
-    end
+    @round.update(round_params)
+    redirect_to edit_round_path
+    #Check if render vs redirect and how to handle if update fails. remember to show erros in view
   end
 
   def destroy
