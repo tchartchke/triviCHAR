@@ -4,7 +4,7 @@ class QuizzesController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
-    @round = @quiz.rounds.build()
+    @round = Round.new(quiz: @quiz)
   end
 
   def index

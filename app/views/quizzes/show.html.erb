@@ -9,13 +9,17 @@
   <%= f.submit %>
 <% end %>
 
-<p>Rounds (<%= @quiz.rounds.count %>):
+<p>
+Rounds (<%= @quiz.rounds.count %>):
+</p>
+<ol>
 <% @quiz.rounds.each do |round| %>
   <li>
-    <%= round.subject %>
+    <%= link_to round.subject, edit_round_path %><br>
   </li>
 <% end %>
-</p>
+</ol>
+
 <p>
   <%= link_to 'Delete Quiz', quiz_path(@quiz), method: :delete %>
 </p>
