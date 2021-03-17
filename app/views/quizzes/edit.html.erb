@@ -2,24 +2,4 @@
 <p>
   <%= link_to 'Back to All Quizzes', quizzes_path %> || <%= link_to 'Back to this Quiz', quiz_path(@quiz) %>
 </p>
-<%= form_for @quiz do |f| %>
-  <% if @quiz.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
-
-      <ul>
-      <% @quiz.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.hidden_field :host_id %>
-
-  <%= f.submit %>
-  <%# TODO: PUT IN ERROR MESSAGES ON THIS PAGE %>
-<% end %>
+<%= render 'form' %>
