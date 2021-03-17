@@ -4,28 +4,8 @@
   <%= link_to 'Back to All Quizzes', quizzes_path %> || <%= link_to 'Back to this Quiz', quiz_path(@round.quiz) %> 
 </p>
 
-<%= form_for @round do |f| %>
+<%= render partial: 'form', locals: {sub_text: 'Rename Round'} %> 
 
-  <% if @round.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
-
-      <ul>
-      <% @round.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <%= f.label :subject %>
-  <%= f.text_field :subject %>
-
-  <%= f.hidden_field :quiz_id %>
-
-  <%= f.submit 'Rename Round' %>
-<% end %>
 <h2>Questions/Answers:</h2>
 <p>
   <%= form_for [@round, @question] do |f| %>
