@@ -1,15 +1,6 @@
 <%= form_for @round do |f| %>
-  <% if @round.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
+  <%= render partial: 'application/error', locals: {object: @round, txt: 'round'} %> 
 
-      <ul>
-      <% @round.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <%= f.label :subject %>
   <%= f.text_field :subject %>
 

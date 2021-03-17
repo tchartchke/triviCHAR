@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    # TODO: this is gross. please fix this
     @question = Question.find(params[:id])
     q = @question.question
     if question_params[:question].blank?
@@ -34,7 +35,7 @@ class QuestionsController < ApplicationController
       else
         @question.answer_attributes = question_params[:answer_attributes]
       end
-      @@question.save
+      @question.save
       redirect_to edit_round_path(question_params[:round_id])
     end
   end
