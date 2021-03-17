@@ -1,5 +1,7 @@
 <h1>Create a New Quiz</h1>
-
+<p>
+<%= link_to 'Back to quizzes', quizzes_path %>
+</p>
 <%= form_for @quiz do |f| %>
   <% if @quiz.errors.any? %>
     <div id="error_explanation">

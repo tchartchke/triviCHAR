@@ -1,4 +1,9 @@
 <h1>Edit Question here!</h1>
+
+<p>
+  <%= link_to 'Back to All Quizzes', quizzes_path %> || <%= link_to 'Back to this Quiz', quiz_path(@round.quiz) %> || <%= link_to 'Back to this Round', edit_round_path(@round) %> 
+</p>
+
 <%= form_for [@round, @question] do |f| %>
 
   <% if @question.errors.any? %>
@@ -22,7 +27,6 @@
   <% end %>
   <br>
   <%= f.submit %>
-  <%# TODO: PUT IN ERROR MESSAGES ON THIS PAGE %>
 <% end %>
 
 

@@ -1,5 +1,7 @@
 <h1>Edit Existing Quiz</h1>
-
+<p>
+  <%= link_to 'Back to All Quizzes', quizzes_path %> || <%= link_to 'Back to this Quiz', quiz_path(@quiz) %>
+</p>
 <%= form_for @quiz do |f| %>
   <% if @quiz.errors.any? %>
     <div id="error_explanation">
