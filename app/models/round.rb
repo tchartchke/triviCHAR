@@ -5,4 +5,8 @@ class Round < ApplicationRecord
 
   #TODO: propgate destroy
   validates :subject, presence: true
+
+  def display
+    subject
+  end
 end

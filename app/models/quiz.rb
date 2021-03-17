@@ -4,4 +4,8 @@ class Quiz < ApplicationRecord
 
   #TODO: propgate destroy
   validates :title, presence: true #needs to have a name
+
+  def display
+    title
+  end
 end

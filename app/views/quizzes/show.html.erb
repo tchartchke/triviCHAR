@@ -9,11 +9,7 @@
 Rounds (<%= @quiz.rounds.count %>):
 </p>
 <ol>
-<% @quiz.rounds.each do |round| %>
-  <li>
-    <%= link_to round.subject, edit_round_path(round) %><br>
-  </li>
-<% end %>
+  <%= render partial: 'application/list_with_links', collection: @quiz.rounds, as: :item, locals: {path: 'edit_round_path'} %>
 </ol>
 
 <p>
