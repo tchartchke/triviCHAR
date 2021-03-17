@@ -8,4 +8,12 @@ class Quiz < ApplicationRecord
   def display
     title
   end
+
+  def num_rounds
+    rounds.count
+  end
+
+  def num_questions
+    rounds.collect{ |round| round.num_questions }.reduce(:+)
+  end
 end

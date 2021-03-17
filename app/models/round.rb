@@ -9,4 +9,8 @@ class Round < ApplicationRecord
   def display
     subject
   end
+
+  def num_questions
+    questions.count
+  end
 end
