@@ -23,5 +23,7 @@ class User < ApplicationRecord
     end
   end
         
-
+  def quiz_master?
+    !quizzes.empty?
+  end
 end
