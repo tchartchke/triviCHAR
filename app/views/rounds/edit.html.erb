@@ -4,7 +4,7 @@
   <%= link_to 'Back to All Quizzes', quizzes_path %> || <%= link_to 'Back to this Quiz', quiz_path(@round.quiz) %> 
 </p>
 
-<%= render partial: 'form', locals: {sub_text: 'Rename Round'} %> 
+<%= render partial: 'rounds/form', locals: {sub_text: 'Rename Round'} %> 
 
 <h2>Questions/Answers:</h2>
 <p>
