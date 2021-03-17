@@ -1,5 +1,23 @@
-<h1>Create a New Quiz</h1>
-<p>
-<%= link_to 'Back to quizzes', quizzes_path %>
-</p>
-<%= render 'form' %>
+<% title ': Create a new Quiz' %>
+<main>
+  <div class="lg:flex lg:items-center lg:justify-between mt-20 ml-60 mr-60">
+    <div class="flex-1 min-w-0">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        Create a New Quiz
+      </h2>
+      <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+        
+      </div>
+    </div>
+
+    <div class="ml-3 inline-flex rounded-md shadow">
+      <%= link_to 'View Quizzes', quizzes_path, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50" %>
+    </div>
+    
+  </div>
+  <div class="min-h-screen flex justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <%= render 'form' %>
+    </div>
+  </div>
+</main>
