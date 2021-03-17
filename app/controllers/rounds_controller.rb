@@ -26,7 +26,6 @@ class RoundsController < ApplicationController
       @question.build_answer
       render :edit
     end
-    
   end
 
   def destroy
