@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :quizzes, :foreign_key => 'host_id'
-  # has_secure_password
+
+  has_many :games, :foreign_key => 'player_id'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 

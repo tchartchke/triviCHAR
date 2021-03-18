@@ -2,6 +2,8 @@ class Quiz < ApplicationRecord
   belongs_to :host, :class_name => 'User'
   has_many :rounds
 
+  has_many :games
+
   #TODO: propgate destroy
   validates :title, presence: true #needs to have a name
 
