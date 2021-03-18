@@ -1,15 +1,27 @@
 <%= form_for [@round, @question] do |f| %>
-  <%= render partial: 'application/error', locals: {object: @question, txt: 'question'} %> 
+  <div class="shadow sm:rounded-md sm:overflow-hidden">
+    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+      <%= render partial: 'application/error', locals: {object: @question, txt: 'question'} %> 
+      <%= f.hidden_field :round_id %>
+      
+      <div>  
+        <%= f.label :question, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= f.text_field :question, rows: 3, class:"shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" %><br>
+        </div>
+      </div>
 
-  <%= f.hidden_field :round_id %>
-  <%= f.label :question %>
-  <%= f.text_field :question %><br>
-  <%= f.fields_for :answer do |answer| %>
-    <%= answer.label :answer %>
-    <%= answer.text_field :answer %>
-  <% end %>
-  <br>
-  <%= f.submit sub_text%>
+      <div class="col-span-1">
+        <%= f.fields_for :answer do |answer| %>
+          <%= answer.label :answer, class: "block text-sm font-medium text-gray-700" %>
+          <%= answer.text_field :answer, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+      <%= f.submit sub_text, class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </div>
+  </div>
 <% end %>
 
 <%# Used in questions/edit and rounds/edit %>
