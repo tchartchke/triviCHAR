@@ -1,6 +1,14 @@
 <% title ': Create a new Account' %>
 
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<% if flash.alert %>
+ <div id=”error_explanation”>
+  <ul>
+   <li><%= flash.alert %></li>
+  </ul>
+ </div>
+<% end %>
+
+<div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full space-y-8">
     <div>
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
@@ -12,7 +20,7 @@
       </p>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{ class:"mt-8 space-y-6" }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{ class:"mt-8 space-y-6" }) do |f| %>
    
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px">

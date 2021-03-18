@@ -1,6 +1,14 @@
 <% title ': Sign into your Account' %>
 
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<% if flash.alert %>
+ <div id=”error_explanation”>
+  <ul>
+   <li><%= flash.alert %></li>
+  </ul>
+ </div>
+<% end %>
+
+<div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full space-y-8">
     <div>
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
