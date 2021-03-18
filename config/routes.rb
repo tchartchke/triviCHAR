@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy]
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions'  }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations'  }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "application#welcome"
