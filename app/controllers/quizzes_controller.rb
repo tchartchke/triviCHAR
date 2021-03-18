@@ -2,7 +2,6 @@ class QuizzesController < ApplicationController
   before_action :authenticate_user!
   # TODO: Create before_action to check that current user is host of quiz for only [show, edit, update, delete]
 
-
   def index
     @quizzes = current_user.quizzes
   end
@@ -43,6 +42,12 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
     @quiz.destroy
     redirect_to quizzes_path
+  end
+
+  def play
+    #list of playable quizzes. (creates a game)
+    #can also be in scope of specific user if you like a certain user's games
+    @quizzes = Quiz.all
   end
 
   private

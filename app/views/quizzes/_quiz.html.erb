@@ -1,10 +1,10 @@
 <tr>
   <td class="px-6 py-4 whitespace-nowrap">
-    <div class="text-sm text-gray-900"> <%= quiz_name(item) %> </div>
+    <div class="text-sm text-gray-900"> <%= send(first_col, item) %> </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
-    <div class="text-sm text-gray-900"> <%= num_rounds(item) %> </div>
-    <div class="text-sm text-gray-500"> <%= num_questions(item) %> questions </div>
+    <div class="text-sm text-gray-900"> <%= send(sec_col1, item) %> </div>
+    <div class="text-sm text-gray-500"> <%= "#{send(sec_col2, item)} #{sec_txt}" %>  </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
@@ -12,8 +12,8 @@
     </span>
   </td>
   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-    <%= link_to 'Edit', quiz_path(item), class:"text-indigo-600 hover:text-indigo-900" %>
+    <%= link_to path_txt, send(path, item), class:"text-indigo-600 hover:text-indigo-900" %>
   </td>
 </tr>
 
-<%# in Quizzes/index %>
+<%# in Quizzes/index and quizzes/play (aka browse)%>

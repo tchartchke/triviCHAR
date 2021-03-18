@@ -1,6 +1,7 @@
-<% title ': All Your Quizzes' %>
+<% title ': Browse Playable Quizzes' %>
 
-<%= render partial: 'application/header', locals: {head_text: 'My Quizzes'} %>
+<%= render partial: 'application/header', locals: {head_text: 'Browse Quizzes'} %>
+
 <main>
 
 
@@ -12,25 +13,23 @@
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Title
+                Host
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Rounds
+                Quiz
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
               <th scope="col" class="relative px-6 py-3 text-right">
-                <%= link_to 'Create a new Quiz', new_quiz_path, class:"text-indigo-600 hover:text-indigo-900"  %>
-                <span class="sr-only">Edit</span> 
+                <span class="sr-only">Play a Game</span> 
               </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
 
 
-            <%= render partial: 'quiz', collection: @quizzes, as: :item, locals: {first_col: 'quiz_name', sec_col1: 'num_rounds', sec_col2: 'num_questions', sec_txt: 'questions', path_txt: 'Edit', path: 'quiz_path'} %>
-
+            <%= render partial: 'quiz', collection: @quizzes, as: :item, locals: {first_col: 'quiz_host', sec_col1: 'quiz_name', sec_col2: 'num_rounds', sec_txt: 'rounds', path_txt: 'Play a Game', path: 'quiz_path'} %>
 
           </tbody>
         </table>
@@ -40,4 +39,3 @@
 </div>
 
 </main>
-

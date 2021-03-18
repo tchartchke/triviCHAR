@@ -3,6 +3,10 @@ module QuizzesHelper
     quiz.title
   end
 
+  def quiz_host(quiz)
+    quiz.host.email
+  end
+
   def num_rounds(quiz)
     quiz.rounds.count
   end

@@ -28,7 +28,7 @@
 
               <%= link_to 'Create a Quiz', new_quiz_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%>
 
-              <%= link_to 'Browse Games', '#', class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%>
+              <%= link_to 'Browse Games', browse_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%>
   
             </div>
           </div>
@@ -90,8 +90,7 @@
       </div>
     </div>
   </nav>
-
-    <%= yield %>=
+    <%= yield %>
   </body>
   <footer>
 
