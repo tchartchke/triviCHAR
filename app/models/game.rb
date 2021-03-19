@@ -34,7 +34,7 @@ class Game < ApplicationRecord
 
   def submit
     case status
-    when 'new'git 
+    when 'new'
       'Game has not been started yet'
     when 'incomplete'
       update(status: 'complete')
