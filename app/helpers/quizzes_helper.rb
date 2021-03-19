@@ -14,4 +14,8 @@ module QuizzesHelper
   def num_questions(quiz)
     quiz.num_questions
   end
+
+  def is_game?(quiz)
+    #TODO: finds if the id of this quiz matches with the games of the current player
+  end
 end

@@ -21,11 +21,8 @@ class QuestionsController < ApplicationController
   def update
     # TODO: this is gross. please fix this
     @question = Question.find(params[:id])
-    q = @question.question
     if question_params[:question].blank?
       @question.update(question_params)
-      question_params[:question] = q
-      @question.question = question_params[:question]
       @round = Round.find(params[:round_id])
       render :edit
     else

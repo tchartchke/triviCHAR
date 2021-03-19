@@ -18,9 +18,15 @@ class GamesController < ApplicationController
     end
   end
 
+  def update
+    @game = Game.find(params[:id])
+    @game.update(game_params)
+    render :show
+  end
+
   private
 
   def game_params
-    params.require(:game).permit( :quiz_id, :player_id )
+    params.require(:game).permit( :quiz_id, :player_id, :status )
   end
 end

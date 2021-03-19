@@ -20,14 +20,21 @@ class Game < ApplicationRecord
         end
       end
       update(status: 'incomplete')
+      save
     else
       'Game already started'
     end
   end
 
+  def restart
+    game_rounds.destroy_all
+    player_answers.destroy_all
+    self.update(status: 'new')
+  end
+
   def submit
     case status
-    when 'new'
+    when 'new'git 
       'Game has not been started yet'
     when 'incomplete'
       update(status: 'complete')

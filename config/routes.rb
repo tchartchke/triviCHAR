@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get '/browse' => 'quizzes#play'
 
-  resources :games, only: [:index, :show, :create]
+  resources :games, only: [:index, :show, :create, :update]
 
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks', 

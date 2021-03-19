@@ -2,6 +2,101 @@
 
 <%= render partial: 'application/header', locals: {head_text: 'This one specific game '} %>
 
-if new, show big button that says start game.
+<% case @game.status %>
+<% when 'new' %>
+  <%= render partial: 'start' %>
+<% when 'incomplete' %>
 
-if incomplete, 
+Find first round where status is open
+  Round: round.subject
+    question              player_answer
+    question              player_answer
+    question              player_answer
+    question              player_answer
+    question              player_answer
+            Save Answers        submit round
+----------------------------------------------
+
+
+
+
+
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg m-10">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">Round Subject</h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">Round number out of ##</p>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+
+
+      <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500 sm:col-span-3">
+          <label for="street_address" class="block text-sm font-medium text-gray-700"> QUESSTION GOES HERE </label>
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+          <input type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+        </dd>
+      </div>
+      <hr />
+
+      <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500 sm:col-span-3">
+          <label for="street_address" class="block text-sm font-medium text-gray-700"> Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu? </label>
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+          <input type="text" name="street_address" id="street_address" autocomplete="street-address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+        </dd>
+      </div>
+      <hr />
+
+
+    </dl>
+  </div>
+  <div class="px-4 py-3 bg-gray-50 text-right sm:px-6 sm:flex sm:flex-row-reverse">
+    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+      Submit Round
+    </button>
+    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+      Save Answers
+    </button>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% else %>
+
+<% end %>
