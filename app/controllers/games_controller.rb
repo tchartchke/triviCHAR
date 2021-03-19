@@ -4,13 +4,18 @@ class GamesController < ApplicationController
   end
 
   def show
-
+    @game = Game.find(params[:id])
   end
 
   def create
-    raise params.inspect
-    game_params[:quiz_id] = params[:format]
-    @game = Game.new( game_params[:quiz_id] )
+    # raise params.inspect
+    @game = Game.new( game_params )
+    # TODO: eventually add things to check if game is public
+    if @game.save
+      redirect_to game_path(@game)
+    else
+      render :no_game
+    end
   end
 
   private

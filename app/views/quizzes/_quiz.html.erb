@@ -18,6 +18,7 @@
     <% else %>
       <%= form_for @game do |f| %>
         <%= f.hidden_field :quiz_id, :value => item.id %>
+        <%= f.hidden_field :player_id %>
         <%= f.submit "Play this Game", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
       <% end %>
     <% end %>
