@@ -7,11 +7,11 @@
 
   <% if current_user.quiz_master? %>
 
-    <div class="bg-gray-50">
+    <div class="bg-gray-100">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           <span class="block">You are a Quiz Master</span>
-          <span class="block text-indigo-600">Check out your Quizzes</span>
+          <span class="block text-indigo-600">See all the quizzes you've made.</span>
         </h2>
         <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
           <div class="ml-3 inline-flex rounded-md shadow">
@@ -23,11 +23,11 @@
 
   <% else %>
 
-    <div class="bg-gray-50">
+    <div class="bg-gray-100">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           <span class="block">Ready to be a Quiz Master?</span>
-          <span class="block text-indigo-600">Create your first Quiz</span>
+          <span class="block text-indigo-600">Create your first Quiz today.</span>
         </h2>
         <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
           <div class="ml-3 inline-flex rounded-md shadow">
@@ -37,40 +37,35 @@
       </div>
     </div>
 
-  <% end %>
+  <% end %>  
+
+
+  
 
   <div class="bg-white">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
       <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-        <span class="block">Ready to dive in?</span>
-        <span class="block text-indigo-600">Start your free trial today.</span>
+        <span class="block">Hankering for some new trivia?</span>
+        <span class="block text-indigo-600">Check out available quizzes to take.</span>
       </h2>
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div class="inline-flex rounded-md shadow">
-          <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
-            Get started
-          </a>
+          <%= link_to 'Browse', browse_path, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="bg-gray-50">
+
+  <div class="bg-gray-100">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
       <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-        <span class="block">Ready to dive in?</span>
-        <span class="block text-indigo-600">Start your free trial today.</span>
+        <span class="block">You've got games!</span>
+        <span class="block text-indigo-600">View the quizzes you're taken.</span>
       </h2>
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div class="inline-flex rounded-md shadow">
-          <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
-            Get started
-          </a>
-        </div>
-        <div class="ml-3 inline-flex rounded-md shadow">
-          <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
-            Learn more
-          </a>
+          <%= link_to 'See Games', games_path, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"%>
         </div>
       </div>
     </div>

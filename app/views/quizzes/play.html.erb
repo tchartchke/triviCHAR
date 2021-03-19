@@ -22,14 +22,13 @@
                 Status
               </th>
               <th scope="col" class="relative px-6 py-3 text-right">
-                <span class="sr-only">Play a Game</span> 
+                <span class="sr-only">Play Game</span> 
               </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
 
-
-            <%= render partial: 'quiz', collection: @quizzes, as: :item, locals: {first_col: 'quiz_host', sec_col1: 'quiz_name', sec_col2: 'num_rounds', sec_txt: 'rounds', path_txt: 'Play a Game', path: 'quiz_path'} %>
+            <%= render partial: 'quiz', collection: @quizzes, as: :item, locals: {first_col: 'quiz_host', sec_col1: 'quiz_name', sec_col2: 'num_rounds', sec_txt: 'rounds', path: nil} %>
 
           </tbody>
         </table>

@@ -12,7 +12,16 @@
     </span>
   </td>
   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-    <%= link_to path_txt, send(path, item), class:"text-indigo-600 hover:text-indigo-900" %>
+
+    <% if path %>
+      <%= link_to path_txt, send(path, item), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+    <% else %>
+      <%= form_for @game do |f| %>
+        <%= f.hidden_field :quiz_id, :value => item.id %>
+        <%= f.submit "Play this Game", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
+      <% end %>
+    <% end %>
+
   </td>
 </tr>
 
