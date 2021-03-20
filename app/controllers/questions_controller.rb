@@ -20,6 +20,9 @@ class QuestionsController < ApplicationController
 
   def update
     # TODO: this is gross. please fix this
+
+    raise
+
     @question = Question.find(params[:id])
     if question_params[:question].blank?
       @question.update(question_params)

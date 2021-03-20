@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_041619) do
 
   create_table "game_rounds", force: :cascade do |t|
     t.integer "game_id"
+    t.integer "round_id"
     t.string "status", default: "open"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

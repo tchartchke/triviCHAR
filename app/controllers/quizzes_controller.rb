@@ -48,7 +48,6 @@ class QuizzesController < ApplicationController
     #list of playable quizzes. (creates a game)
     #can also be in scope of specific user if you like a certain user's games
     @quizzes = Quiz.all
-    # @game = Game.new(player_id: current_user.id)
   end
 
   private
