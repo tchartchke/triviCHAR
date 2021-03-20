@@ -19,7 +19,11 @@ class GamesController < ApplicationController
   end
 
   def update
+    # raise
     @game = Game.find(params[:id])
+    if params[:init]
+      @game.start
+    end
     @game.update(game_params)
     render :show
   end
@@ -27,6 +31,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit( :quiz_id, :player_id, :status )
+    params.require(:game).permit( :quiz_id, :player_id )
   end
 end
