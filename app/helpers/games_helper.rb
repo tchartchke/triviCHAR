@@ -15,7 +15,11 @@ module GamesHelper
     game.game_rounds.count
   end
 
-  def curr_or_new_game_for(user: user, quiz: quiz)
+  def curr_or_new_game_for(user:, quiz:)
     user.games.find{ |game| game.quiz == quiz} || Game.new(player_id: user.id)
+  end
+
+  def this_round(game)
+    game.rounds_submitted + 1
   end
 end

@@ -11,7 +11,7 @@
   <div class="bg-white shadow overflow-hidden sm:rounded-lg m-10">
     <div class="px-4 py-5 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900"> <%= curr_subject(@game) %> </h3>
-      <p class="mt-1 max-w-2xl text-sm text-gray-500">Round number # out of <%= game_rounds(@game) %></p>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">Round <%= this_round(@game) %> out of <%= game_rounds(@game) %></p>
     </div>
     <div class="border-t border-gray-200">
       <dl>

@@ -47,7 +47,8 @@ class Game < ApplicationRecord
     game_rounds.find_by(status: 'open')
   end
 
-  def round_subject
-    
+  def rounds_submitted
+    game_rounds.count { |r| r.status == 'closed' }
   end
+
 end
