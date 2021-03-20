@@ -9,8 +9,13 @@ class GameRound < ApplicationRecord
     round.subject
   end
 
+  def last_round?
+    game.rounds_submitted == game.game_rounds.count
+  end
+
   def submit
     update(status: 'closed')
+    game.submit if last_round?
   end
 
 end
