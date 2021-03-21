@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-
+    @games = current_user.games.where(status == 'complete' || status == 'incomplete')
   end
 
   def show
