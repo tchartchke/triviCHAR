@@ -47,11 +47,23 @@ class QuizzesController < ApplicationController
   def play
     #list of playable quizzes. (creates a game)
     #can also be in scope of specific user if you like a certain user's games
-    @quizzes = Quiz.all
+    @quizzes = Quiz.where(:status => 'published')
+
   end
 
   def published
     @quiz = Quiz.find(params[:id])
+  end
+
+  def publish
+    @quiz = Quiz.find(params[:id])
+    if @quiz.publish
+      redirect_to quizzes_path
+    else
+    @round = Round.new(quiz: @quiz)
+    @msg = 'Unable to publish quiz. Please verify all rounds and questions have answers.'
+    render :show
+    end
   end
 
   private

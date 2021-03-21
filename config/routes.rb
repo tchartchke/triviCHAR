@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   get '/browse' => 'quizzes#play'
   get '/published/:id' => 'quizzes#published', as: 'published'
+  get '/publish/:id' => 'quizzes#publish', as: 'publish'
 
   resources :games, only: [:index, :show, :create, :update]
   resources :game_rounds, only: [:update]
