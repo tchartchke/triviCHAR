@@ -1,5 +1,6 @@
 module GameRoundsHelper
-  def display_question(p_answer)
-    p_answer.question.question
+
+  def display_subject(game_round)
+    game_round.subject
   end
 end
