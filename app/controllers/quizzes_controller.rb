@@ -38,15 +38,13 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
-    #Ask for verification
+    #TODO:Ask for verification and propogate delete
     @quiz = Quiz.find(params[:id])
     @quiz.destroy
     redirect_to quizzes_path
   end
 
   def play
-    #list of playable quizzes. (creates a game)
-    #can also be in scope of specific user if you like a certain user's games
     @quizzes = Quiz.where(:status => 'published')
 
   end
