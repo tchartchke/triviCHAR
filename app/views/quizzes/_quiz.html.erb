@@ -6,24 +6,41 @@
     <div class="text-sm text-gray-900"> <%= send(sec_col1, item) %> </div>
     <div class="text-sm text-gray-500"> <%= "#{send(sec_col2, item)} #{sec_txt}" %>  </div>
   </td>
-  <td class="px-6 py-4 whitespace-nowrap">
-    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-      Incomplete
-    </span>
-  </td>
-  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
-    <% if path %>
-      <%= link_to path_txt, send(path, item), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
-    <% else %>
-      <%= form_for curr_or_new_game_for(user: current_user, quiz: item) do |f| %> 
-        <%= f.hidden_field :quiz_id, :value => item.id %>
-        <%= f.hidden_field :player_id %>
-        <%= f.submit "Play this Game", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
+  <% if view_status(item) == 'incomplete' %>
+    <td class="px-6 py-4 whitespace-nowrap">
+      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+        Incomplete
+      </span>
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+      <% if path %>
+        <%= link_to path_txt, send(path, item), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+      <% else %>
+        <%= form_for curr_or_new_game_for(user: current_user, quiz: item) do |f| %> 
+          <%= f.hidden_field :quiz_id, :value => item.id %>
+          <%= f.hidden_field :player_id %>
+          <%= f.submit "Play this Game", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
+        <% end %>
       <% end %>
-    <% end %>
+    </td>
+  <% else %>
 
-  </td>
+
+    <td class="px-6 py-4 whitespace-nowrap">
+      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+        Published
+      </span>
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+      <% if path %>
+        <%= link_to 'View', published_path(item), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+      <% end %>
+    </td>
+    
+  <% end %>
+
+
 </tr>
 
 <%# in Quizzes/index and quizzes/play (aka browse)%>

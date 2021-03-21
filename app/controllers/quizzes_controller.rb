@@ -50,6 +50,10 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
   end
 
+  def published
+    @quiz = Quiz.find(params[:id])
+  end
+
   private
 
   def quiz_params

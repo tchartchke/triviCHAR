@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy]
   
   get '/browse' => 'quizzes#play'
+  get '/published/:id' => 'quizzes#published', as: 'published'
 
   resources :games, only: [:index, :show, :create, :update]
   resources :game_rounds, only: [:update]

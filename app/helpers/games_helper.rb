@@ -22,4 +22,8 @@ module GamesHelper
   def this_round(game)
     game.rounds_submitted + 1
   end
+
+  def name(game)
+    game.quiz.title
+  end
 end
