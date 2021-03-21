@@ -1,4 +1,5 @@
 module GamesHelper
+
   def status(game)
     game.status 
   end

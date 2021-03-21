@@ -41,19 +41,52 @@
                   <div class="text-sm text-gray-500"> <%= "#{num_rounds(quiz)} Rounds" %>  </div>
                 </td>
 
+                
+
+                <%= form_for curr_or_new_game_for(user: current_user, quiz: quiz) do |f| %> 
+
+                  <% if status(f.object) == 'new' %>
+
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                      Incomplete
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                      New
                     </span>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <%= form_for curr_or_new_game_for(user: current_user, quiz: quiz) do |f| %> 
-                      <%= f.hidden_field :quiz_id, :value => quiz.id %>
-                      <%= f.hidden_field :player_id %>
-                      <%= f.submit "Play this Game", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
-                    <% end %>
+                    <%= f.hidden_field :quiz_id, :value => quiz.id %>
+                    <%= f.hidden_field :player_id %>
+                    <%= f.submit "Play", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
                   </td>
 
+                  <% else %>
+
+                    <% if status(f.object) == 'incomplete' %>
+
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                          Incomplete
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+
+                        <%= link_to 'Continue', game_path(f.object), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+                      </td>
+                    <% else %>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          Submitted
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+
+                        <%= link_to 'View', game_path(f.object), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+                      </td>
+
+                    <% end %>
+          
+                  <% end %>
+
+                <% end %>
 
               </tr>
 

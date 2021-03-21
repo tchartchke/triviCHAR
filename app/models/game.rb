@@ -29,7 +29,7 @@ class Game < ApplicationRecord
   def restart
     game_rounds.destroy_all
     player_answers.destroy_all
-    self.update(status: 'new')
+    update(status: 'new')
   end
 
   def submit
