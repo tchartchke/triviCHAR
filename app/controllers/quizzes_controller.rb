@@ -45,7 +45,15 @@ class QuizzesController < ApplicationController
   end
 
   def play
-    @quizzes = Quiz.where(:status => 'published')
+    # more quireres to model
+    case params[:sort]
+    when 'title'
+      @quizzes = Quiz.sort_by_title.published
+    when 'status'
+      @quizzes = Quiz.sort_by_status.published
+    else
+      @quizzes = Quiz.published
+    end
 
   end
 

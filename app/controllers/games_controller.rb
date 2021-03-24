@@ -8,7 +8,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @game = Game.new( game_params )
     # TODO: eventually add things to check if game is public
     if @game.save
@@ -19,7 +18,6 @@ class GamesController < ApplicationController
   end
 
   def update
-    # raise
     @game = Game.find(params[:id])
     if params[:init]
       @game.start

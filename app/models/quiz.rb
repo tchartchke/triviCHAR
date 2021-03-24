@@ -3,9 +3,15 @@ class Quiz < ApplicationRecord
   has_many :rounds
 
   has_many :games
+  
+  has_many :comments
+  has_many :commenters, through: :comments, :class_name => 'User', :source => :player
 
-  #TODO: propgate destroy
-  validates :title, presence: true #needs to have a name
+  validates :title, presence: true
+
+  scope :published, -> { where(status: 'published') }
+  scope :sort_by_title, -> { order('lower(title)') }
+  scope :sort_by_status, -> { order('status') }
 
   def display
     title
@@ -39,4 +45,5 @@ class Quiz < ApplicationRecord
     end
     false
   end
+
 end

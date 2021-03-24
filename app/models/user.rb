@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   has_many :games, :foreign_key => 'player_id'
 
+  has_many :comments, :foreign_key => 'player_id'
+  has_many :commented_quizzes, through: :comments, :class_name => 'Quiz', :source => :quiz
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 
