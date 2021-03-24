@@ -7,8 +7,6 @@ class Game < ApplicationRecord
 
   validates :quiz_id, presence: true
   validates :player_id, presence: true
-  # validates :status, inclusion: { in: %w(new complete incomplete),
-    # message: "%{value} is not a valid sisze" }
 
   def start
     if status == 'new'

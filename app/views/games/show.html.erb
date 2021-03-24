@@ -42,9 +42,7 @@
 
 <% else %>
 
-
   <% @game.game_rounds.each do |round| %>
-
 
   <div class="bg-white shadow overflow-hidden sm:rounded-lg m-10 border-r border-t border-l border-gray-200">
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -73,7 +71,15 @@
   </div>
 
 
-
   <% end %>
+  <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Leave a comment about this quiz!</h2>
+      <%= render partial: 'comments/form' %>
+    </div>
+  </div>
+
+
 
 <% end %>

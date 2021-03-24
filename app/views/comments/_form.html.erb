@@ -1,0 +1,18 @@
+<%= form_for [game_of_quiz(@game), @comment], html:{ class:"mt-8 space-y-6" }  do |f| %>
+
+    <div class="rounded-md shadow-sm -space-y-px">
+    <div class="col-span-6 sm:col-span-4">
+  <%= render partial: 'application/error', locals: {object: @comment, txt: 'comment'} %> 
+      <%= f.label :comment, class: "block text-sm font-medium text-gray-700" %>
+      <%= f.text_field :comment, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-5" %>
+
+    </div>
+
+    
+    <%= f.hidden_field :quiz_id, :value => game_of_quiz(@game).id %>
+    <div>
+    <%= f.submit "Submit", class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    
+    </div>
+  </div>
+<% end %>

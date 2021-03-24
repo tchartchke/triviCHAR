@@ -1,7 +1,7 @@
 module GamesHelper
 
   def status(game)
-    game.status 
+    game.status
   end
 
   def curr_round(game)
@@ -26,5 +26,9 @@ module GamesHelper
 
   def name(game)
     game.quiz.title
+  end
+
+  def game_of_quiz(game)
+    game.quiz
   end
 end

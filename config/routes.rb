@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+  resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy] do 
+    resources :comments, only: [:create]
+  end
   
   get '/browse' => 'quizzes#play'
   get '/published/:id' => 'quizzes#published', as: 'published'
