@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @quiz = Quiz.find(params[:quiz_id])
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.player = current_user

@@ -22,4 +22,8 @@ module QuizzesHelper
   def view_status(quiz)
     quiz.status
   end
+
+  def has_comments?(quiz)
+    !quiz.comments.empty?
+  end
 end
