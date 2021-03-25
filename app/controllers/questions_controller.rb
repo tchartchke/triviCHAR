@@ -8,7 +8,6 @@ class QuestionsController < ApplicationController
       @round = Round.find(params[:round_id])
       @question.build_answer if @question.answer.nil?
       render :action => '../rounds/edit'
-      # render :controller => 'rounds', :action => 'edit'
     end
   end
 
