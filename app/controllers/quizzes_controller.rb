@@ -1,6 +1,5 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
-  # skip_before_action :is_host, only: [:index, :new, :create, :play]
   before_action :is_host, only: [:show, :destroy, :publish]
 
 
