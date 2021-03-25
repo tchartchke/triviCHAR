@@ -7,4 +7,8 @@ class Question < ApplicationRecord
 
   #TODO: propgate destroy
   validates :question, presence: true
+
+  def host
+    round.host
+  end
 end

@@ -1,5 +1,8 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
+  # skip_before_action :is_host, only: [:index, :new, :create, :play]
+  before_action :is_host, only: [:show, :destroy, :publish]
+
 
   def index
     @quizzes = current_user.quizzes
@@ -44,7 +47,6 @@ class QuizzesController < ApplicationController
   end
 
   def play
-    # more quireres to model
     case params[:sort]
     when 'title'
       @quizzes = Quiz.sort_by_title.published
@@ -74,4 +76,10 @@ class QuizzesController < ApplicationController
   def quiz_params
     params.require(:quiz).permit(:title, :host_id)
   end 
+
+  def is_host
+    unless current_user == Quiz.find(params[:id]).host
+      redirect_to user_root_path
+    end
+  end
 end

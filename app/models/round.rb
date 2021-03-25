@@ -13,7 +13,12 @@ class Round < ApplicationRecord
   def num_questions
     questions.count
   end
+  
   def num_answers
     answers.count
+  end
+
+  def host
+    quiz.host
   end
 end
