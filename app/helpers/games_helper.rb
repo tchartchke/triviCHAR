@@ -25,7 +25,11 @@ module GamesHelper
   end
 
   def name(game)
-    game.quiz.title
+    unless game.quiz.nil?
+      game.quiz.title
+    else
+      "nope"
+    end
   end
 
   def game_of_quiz(game)

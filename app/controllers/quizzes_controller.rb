@@ -1,6 +1,5 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
-  # TODO: Create before_action to check that current user is host of quiz for only [show, edit, update, delete]
 
   def index
     @quizzes = current_user.quizzes
@@ -49,8 +48,6 @@ class QuizzesController < ApplicationController
     case params[:sort]
     when 'title'
       @quizzes = Quiz.sort_by_title.published
-    when 'status'
-      @quizzes = Quiz.sort_by_status.published
     else
       @quizzes = Quiz.published
     end

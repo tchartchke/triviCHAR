@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :quizzes, only: [:show, :index, :new, :create, :edit, :update, :destroy] do 
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :index]
   end
   
   get '/browse' => 'quizzes#play'
