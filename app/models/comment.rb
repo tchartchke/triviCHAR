@@ -3,4 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :quiz
 
   validates :comment, presence: true
+
+  def host 
+    quiz.host
+  end
 end

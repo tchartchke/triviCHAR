@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_host, only: [:show, :destroy, :publish]
+  before_action :object_host, only: [:show, :destroy, :publish]
 
 
   def index
@@ -76,7 +76,7 @@ class QuizzesController < ApplicationController
     params.require(:quiz).permit(:title, :host_id)
   end 
 
-  def is_host
+  def object_host
     unless current_user == Quiz.find(params[:id]).host
       redirect_to user_root_path
     end

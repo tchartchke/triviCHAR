@@ -46,11 +46,12 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit( :question, :round_id, answer_attributes: [ :answer ] )
+  end
 
-    def is_host
-      unless current_user == Question.find(params[:id]).host
-        redirect_to user_root_path
-      end
+  def object_host
+    unless current_user == Question.find(params[:id]).host
+      redirect_to user_root_path
     end
   end
+
 end

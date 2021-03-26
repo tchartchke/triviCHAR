@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_host, except: [:create]
+  before_action :object_host, except: [:create]
 
   def create
     @round = Round.new(round_params)
@@ -42,7 +42,7 @@ class RoundsController < ApplicationController
     params.require(:round).permit(:subject, :quiz_id)
   end
 
-  def is_host
+  def object_host
     unless current_user == Round.find(params[:id]).host
       redirect_to user_root_path
     end
