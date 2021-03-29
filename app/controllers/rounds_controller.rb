@@ -1,9 +1,9 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!
-  before_action :object_host, except: [:create]
 
   def create
     @round = Round.new(round_params)
+    redirect_to user_root_path unless @round.quiz.host == current_user
     if @round.save
       redirect_to quiz_path(@round.quiz)
     else
@@ -14,12 +14,14 @@ class RoundsController < ApplicationController
 
   def edit
     @round = Round.find(params[:id])
+    redirect_to user_root_path unless @round.host == current_user
     @question = Question.new(round_id: params[:id])
     @question.build_answer
   end
 
   def update
     @round = Round.find(params[:id])
+    redirect_to user_root_path unless @round.host == current_user
     if @round.update(round_params)
       redirect_to edit_round_path
     else
@@ -31,6 +33,7 @@ class RoundsController < ApplicationController
 
   def destroy
     round = Round.find(params[:id])
+    redirect_to user_root_path unless @round.host == current_user
     quiz = round.quiz
     round.destroy
     redirect_to quiz_path(quiz)
@@ -42,9 +45,4 @@ class RoundsController < ApplicationController
     params.require(:round).permit(:subject, :quiz_id)
   end
 
-  def object_host
-    unless current_user == Round.find(params[:id]).host
-      redirect_to user_root_path
-    end
-  end
 end
