@@ -7,6 +7,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    redirect_to user_root_path unless @game.player == current_user
     @comment = Comment.new
   end
 
