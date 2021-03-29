@@ -53,8 +53,8 @@ class Game < ApplicationRecord
   private
   
   def quiz_is_public
-    if quiz.status != 'published'
-      errors.add(:quiz, 'is not public. Cannot create game')
+    if quiz.nil? || quiz.status != 'published'
+      errors.add(:quiz, 'must exist and be public')
     end
   end
 
