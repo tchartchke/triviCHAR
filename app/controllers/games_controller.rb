@@ -22,9 +22,8 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    if params[:init]
-      @game.start
-    end
+    redirect_to user_root_path unless @game.player == current_user
+    @game.start if params[:init]
     @game.update(game_params)
     render :show
   end
