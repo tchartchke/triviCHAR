@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @quiz = Quiz.find(params[:quiz_id])
+    can_view(@quiz, 'host')
   end
 
   def create

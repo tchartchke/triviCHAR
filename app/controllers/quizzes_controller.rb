@@ -1,14 +1,13 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     @quizzes = current_user.quizzes
   end
   
   def show
     @quiz = Quiz.find(params[:id])
-    redirect_to user_root_path unless @quiz.host == current_user
+    can_view(@quiz, 'host')
     redirect_to published_path(@quiz) if @quiz.status == 'published'
     @round = Round.new(quiz: @quiz)
   end
@@ -28,13 +27,13 @@ class QuizzesController < ApplicationController
 
   def edit
     @quiz = Quiz.find(params[:id])
-    redirect_to user_root_path unless @quiz.host == current_user
+    can_view(@quiz, 'host')
     redirect_to published_path(@quiz) if @quiz.status == 'published'
   end
 
   def update
     @quiz = Quiz.find(params[:id])
-    redirect_to user_root_path unless @quiz.host == current_user
+    can_view(@quiz, 'host')
     if @quiz.update(quiz_params)
       redirect_to quiz_path(@quiz)
     else
@@ -45,7 +44,7 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz = Quiz.find(params[:id])
     redirect_to published_path(@quiz) if @quiz.status == 'published'
-    redirect_to user_root_path unless @quiz.host == current_user
+    can_view(@quiz, 'host')
     @quiz.destroy
     redirect_to quizzes_path
   end
@@ -61,12 +60,12 @@ class QuizzesController < ApplicationController
 
   def published
     @quiz = Quiz.find(params[:id])
-    redirect_to user_root_path unless @quiz.host == current_user
+    can_view(@quiz, 'host')
   end
 
   def publish
     @quiz = Quiz.find(params[:id])
-    redirect_to user_root_path unless @quiz.host == current_user
+    can_view(@quiz, 'host')
     if @quiz.publish
       redirect_to quizzes_path
     else

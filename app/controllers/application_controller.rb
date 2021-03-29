@@ -9,10 +9,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
+
+  def can_view(obj, role)
+    redirect_to user_root_path unless obj.send(role) == current_user
+  end
+
 
 end

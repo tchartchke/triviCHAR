@@ -7,7 +7,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    redirect_to user_root_path unless @game.player == current_user
+    can_view(@game, 'player')
     @comment = Comment.new
   end
 
@@ -22,7 +22,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    redirect_to user_root_path unless @game.player == current_user
+    can_view(@game, 'player')
     @game.start if params[:init]
     @game.update(game_params)
     render :show

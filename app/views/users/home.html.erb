@@ -1,5 +1,5 @@
 <% title ': Home' %>
-<%= render partial: 'application/header', locals: {head_text: 'Dashboard'} %>
+<%= render partial: 'application/header', locals: {head_text: "Dashboard: #{current_user.email}"} %>
   <main>
   <% if current_user.quiz_master? %>
     <div class="bg-gray-100">

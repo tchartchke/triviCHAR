@@ -3,7 +3,7 @@ class RoundsController < ApplicationController
 
   def create
     @round = Round.new(round_params)
-    redirect_to user_root_path unless @round.quiz.host == current_user
+    can_view(@round.quiz, 'host')
     if @round.save
       redirect_to quiz_path(@round.quiz)
     else
@@ -14,7 +14,7 @@ class RoundsController < ApplicationController
 
   def edit
     @round = Round.find(params[:id])
-    redirect_to user_root_path unless @round.host == current_user
+    can_view(@round, 'host')
     quiz = @round.quiz
     redirect_to published_path(quiz) if quiz.status == 'published'
     @question = Question.new(round_id: params[:id])
@@ -23,7 +23,7 @@ class RoundsController < ApplicationController
 
   def update
     @round = Round.find(params[:id])
-    redirect_to user_root_path unless @round.host == current_user
+    can_view(@round, 'host')
     if @round.update(round_params)
       redirect_to edit_round_path
     else
@@ -35,7 +35,7 @@ class RoundsController < ApplicationController
 
   def destroy
     round = Round.find(params[:id])
-    redirect_to user_root_path unless @round.host == current_user
+    can_view(@round, 'host')
     quiz = round.quiz
     redirect_to published_path(quiz) if quiz.status == 'published'
     round.destroy

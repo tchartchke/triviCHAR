@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    redirect_to user_root_path unless @question.round.host == current_user
+    can_view(@question.round, 'host')
     if @question.save
       redirect_to edit_round_path(question_params[:round_id])
     else
@@ -14,14 +14,14 @@ class QuestionsController < ApplicationController
 
   def edit
     @round = Round.find(params[:round_id])
-    redirect_to user_root_path unless @round.host == current_user
+    can_view(@round, 'host')
     @question = Question.find(params[:id])
     @question.build_answer if @question.answer.nil?
   end
 
   def update
     @question = Question.find(params[:id])
-    redirect_to user_root_path unless @question.host == current_user
+    can_view(@question, 'host')
     if question_params[:question].blank?
       @question.update(question_params)
       @round = Round.find(params[:round_id])
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
-    redirect_to user_root_path unless @question.host == current_user
+    can_view(@question, 'host')
     @question.answer&.destroy
     @question.destroy
     redirect_to edit_round_path(params[:round_id])
