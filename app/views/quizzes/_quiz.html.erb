@@ -6,7 +6,6 @@
     <div class="text-sm text-gray-900"> <%= send(sec_col1, item) %> </div>
     <div class="text-sm text-gray-500"> <%= "#{send(sec_col2, item)} #{sec_txt}" %>  </div>
   </td>
-
   <% if view_status(item) == 'incomplete' %>
     <td class="px-6 py-4 whitespace-nowrap">
       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
@@ -14,13 +13,9 @@
       </span>
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-
         <%= link_to path_txt, send(path, item), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
-  
     </td>
   <% else %>
-
-
     <td class="px-6 py-4 whitespace-nowrap">
       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
         Published
@@ -31,10 +26,7 @@
         <%= link_to 'View', published_path(item), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
       <% end %>
     </td>
-    
   <% end %>
-
-
 </tr>
 
 <%# in Quizzes/index)%>

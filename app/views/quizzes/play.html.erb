@@ -1,102 +1,77 @@
 <% title ': Browse Playable Quizzes' %>
-
 <%= render partial: 'application/header', locals: {head_text: 'Browse Quizzes'} %>
-
 <main>
-
-
-<div class="flex flex-col">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg m-10">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Host
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <%= link_to 'Quiz', browse_path(sort: 'title') %>
-              </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status 
-              </th>
-              <th scope="col" class="relative px-6 py-3 text-right">
-                <span class="sr-only">Play Game</span> 
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-
-
-            <% @quizzes.each do |quiz| %>
-
-
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg m-10">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900"> <%= quiz_host(quiz) %> </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900"> <%= quiz_name(quiz) %> </div>
-                  <div class="text-sm text-gray-500"> <%= "#{num_rounds(quiz)} Rounds" %>  </div>
-                </td>
-
-                
-
-                <%= form_for curr_or_new_game_for(user: current_user, quiz: quiz) do |f| %> 
-
-                  <% if status(f.object) == 'new' %>
-
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                      New
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <%= f.hidden_field :quiz_id, :value => quiz.id %>
-                    <%= f.hidden_field :player_id %>
-                    <%= f.submit "Play", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
-                  </td>
-
-                  <% else %>
-
-                    <% if status(f.object) == 'incomplete' %>
-
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                          Incomplete
-                        </span>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-
-                        <%= link_to 'Continue', game_path(f.object), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
-                      </td>
-                    <% else %>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Submitted
-                        </span>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-
-                        <%= link_to 'View', game_path(f.object), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
-                      </td>
-
-                    <% end %>
-          
-                  <% end %>
-
-                <% end %>
-
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Host
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <%= link_to 'Quiz', browse_path(sort: 'title') %>
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status 
+                </th>
+                <th scope="col" class="relative px-6 py-3 text-right">
+                  <span class="sr-only">Play Game</span> 
+                </th>
               </tr>
-
-            <% end %>
-
-          </tbody>
-        </table>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <% @quizzes.each do |quiz| %>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900"> <%= quiz_host(quiz) %> </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900"> <%= quiz_name(quiz) %> </div>
+                    <div class="text-sm text-gray-500"> <%= "#{num_rounds(quiz)} Rounds" %>  </div>
+                  </td>
+                  <%= form_for curr_or_new_game_for(user: current_user, quiz: quiz) do |f| %> 
+                    <% if status(f.object) == 'new' %>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                        New
+                      </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <%= f.hidden_field :quiz_id, :value => quiz.id %>
+                      <%= f.hidden_field :player_id %>
+                      <%= f.submit "Play", class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium"%>
+                    </td>
+                    <% else %>
+                      <% if status(f.object) == 'incomplete' %>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            Incomplete
+                          </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <%= link_to 'Continue', game_path(f.object), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+                        </td>
+                      <% else %>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            Submitted
+                          </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <%= link_to 'View', game_path(f.object), class:"hover:text-indigo-600 text-white hover:bg-indigo-100 bg-indigo-500 rounded-l-full rounded-r-full px-3 py-1 text-sm font-medium" %>
+                        </td>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </main>

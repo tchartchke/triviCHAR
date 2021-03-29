@@ -2,16 +2,13 @@
   <div class="shadow sm:rounded-md sm:overflow-hidden">
     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
       <%= f.hidden_field :round_id %>
-      
       <div>  
-
         <%= render partial: 'application/error', locals: {object: @question, txt: 'question'} %> 
         <%= f.label :question, class: "block text-sm font-medium text-gray-700" %>
         <div class="mt-1">
           <%= f.text_field :question, rows: 3, class:"shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md", placeholder: "What fruit most closely resembles the size of a blue whale's throat and belly button?" %><br>
         </div>
       </div>
-
       <div class="col-span-1">
         <%= f.fields_for :answer do |answer| %>
           <%= answer.label :answer, class: "block text-sm font-medium text-gray-700" %>

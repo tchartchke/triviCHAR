@@ -1,7 +1,5 @@
 <% title ': Rounds' %>
-
 <%= render partial: 'application/header', locals: {head_text: round_name(@round)} %>
-
 <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
   <div class="ml-3 inline-flex rounded-md shadow">
     <%= link_to 'Back to this Quiz', quiz_path(@round.quiz), class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
@@ -10,22 +8,18 @@
     <%= link_to 'View Quizzes', quizzes_path, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50" %>
   </div>
 </div>
-  
 <div class="bg-gray-100">
   <div class="flex justify-center pt-3 pb-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
-    
       <%= render partial: 'rounds/form', locals: {sub_text: 'Rename Round'} %> 
     </div>
   </div>
 </div>
-
 <div class="bg-gray-100 hidden sm:block" aria-hidden="true">
   <div class="py-5">
     <div class="border-t border-gray-200"></div>
   </div>
 </div>
-
 <div class="bg-gray-100 p-10">
   <div class="md:grid md:grid-cols-3 md:gap-6">
     <div class="md:col-span-1">
@@ -41,7 +35,6 @@
     </div>
   </div>
 </div>
-
 <div class="py-12 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="lg:text-center">
@@ -49,17 +42,13 @@
         Round Questions and Answers
       </p>
     </div>
-
     <div class="mt-10">
       <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-1 md:gap-x-8 md:gap-y-10">
-
         <%= render partial: 'questions/question', collection: @round.questions, as: :item, locals: {round: @round} %>
-
       </dl>
     </div>
   </div>
 </div>
-
 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
   <%= button_to 'Delete Entire Round', round_path(@round), method: :delete, class:"inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" %>
 </div>

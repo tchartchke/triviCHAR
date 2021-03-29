@@ -1,8 +1,5 @@
 <% title ': All Your Quizzes' %>
-
 <%= render partial: 'application/header', locals: {head_text: quiz_name(@quiz)} %>
-
-
 <div class="grid grid-cols-2 bg-gray-100 pl-20 pt-10">
   <div class="ml-3 inline-flex">
     <%= link_to 'Publish Quiz', publish_path(@quiz), class: "px-10 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 shadow" %>
@@ -19,8 +16,6 @@
     </div>
   </div>
 </div>
-
-
 <div class="bg-gray-100 mb-10">
   <div class="flex justify-center pt-3 pb-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
@@ -29,31 +24,22 @@
     </div>
   </div>
 </div>
-
-
 <div class="mx-80 justify-center py-5 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-6">
-
   <dd class="mt-1 text-sm bg-white text-gray-900 sm:mt-0 sm:col-span-2">
     <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
-
       <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
         <div class="w-0 flex-1 flex items-center">
-          <!-- Heroicon name: solid/paper-clip -->
-
           <span class="ml-2 flex-1 w-0 truncate">
             <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Quiz Rounds</h2>
           </span>
         </div>
         <div class="ml-4 flex-shrink-0">
-          
         </div>
       </li> 
       <%= render partial: 'rounds/round', collection: @quiz.rounds, as: :item, locals: {path: 'edit_round_path'} %>
-
     </ul>
   </dd>
 </div>
-
 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
   <%= button_to 'Delete Quiz', quiz_path(@quiz), method: :delete, class:"inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" %>
 </div>
