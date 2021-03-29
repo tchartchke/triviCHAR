@@ -51,5 +51,8 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit( :question, :round_id, answer_attributes: [ :answer ] )
   end
+  
+  # helper method so that all the variables can be calle (like in edit and update before the render)
+  # validate url param is valid
 
 end

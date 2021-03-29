@@ -43,7 +43,11 @@ class Quiz < ApplicationRecord
         end
       end
     end
-    false
+    true
+  end
+
+  def self.search(val)
+    where('title LIKE ?' , "%#{val}%")
   end
 
 end

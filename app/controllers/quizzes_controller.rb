@@ -2,7 +2,11 @@ class QuizzesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @quizzes = current_user.quizzes
+    if params[:name]
+      @quizzes = current_user.quizzes.search(params[:name])
+    else
+      @quizzes = current_user.quizzes
+    end
   end
   
   def show
