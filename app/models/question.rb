@@ -5,7 +5,6 @@ class Question < ApplicationRecord
 
   accepts_nested_attributes_for :answer, reject_if: proc { |attributes| attributes['answer'].blank? }
 
-  #TODO: propgate destroy
   validates :question, presence: true
 
   def host
