@@ -29,6 +29,7 @@ class QuizzesController < ApplicationController
   def edit
     @quiz = Quiz.find(params[:id])
     redirect_to user_root_path unless @quiz.host == current_user
+    redirect_to published_path(@quiz) if @quiz.status == 'published'
   end
 
   def update
@@ -43,6 +44,7 @@ class QuizzesController < ApplicationController
 
   def destroy
     @quiz = Quiz.find(params[:id])
+    redirect_to published_path(@quiz) if @quiz.status == 'published'
     redirect_to user_root_path unless @quiz.host == current_user
     @quiz.destroy
     redirect_to quizzes_path

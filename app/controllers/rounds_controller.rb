@@ -15,6 +15,8 @@ class RoundsController < ApplicationController
   def edit
     @round = Round.find(params[:id])
     redirect_to user_root_path unless @round.host == current_user
+    quiz = @round.quiz
+    redirect_to published_path(quiz) if quiz.status == 'published'
     @question = Question.new(round_id: params[:id])
     @question.build_answer
   end
@@ -35,6 +37,7 @@ class RoundsController < ApplicationController
     round = Round.find(params[:id])
     redirect_to user_root_path unless @round.host == current_user
     quiz = round.quiz
+    redirect_to published_path(quiz) if quiz.status == 'published'
     round.destroy
     redirect_to quiz_path(quiz)
   end
