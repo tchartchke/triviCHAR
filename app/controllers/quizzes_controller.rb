@@ -63,6 +63,7 @@ class QuizzesController < ApplicationController
 
   def publish
     @quiz = Quiz.find(params[:id])
+    redirect_to user_root_path unless @quiz.host == current_user
     if @quiz.publish
       redirect_to quizzes_path
     else
