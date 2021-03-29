@@ -9,6 +9,7 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     redirect_to user_root_path unless @quiz.host == current_user
+    redirect_to published_path(@quiz) if @quiz.status == 'published'
     @round = Round.new(quiz: @quiz)
   end
 
