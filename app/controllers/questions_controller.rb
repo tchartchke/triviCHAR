@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
+    redirect_to user_root_path unless @question.host == current_user
     if question_params[:question].blank?
       @question.update(question_params)
       @round = Round.find(params[:round_id])
@@ -38,6 +39,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
+    redirect_to user_root_path unless @question.host == current_user
     @question.answer&.destroy
     @question.destroy
     redirect_to edit_round_path(params[:round_id])
@@ -47,12 +49,6 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit( :question, :round_id, answer_attributes: [ :answer ] )
-  end
-
-  def object_host
-    unless current_user == Question.find(params[:id]).host
-      redirect_to user_root_path
-    end
   end
 
 end
