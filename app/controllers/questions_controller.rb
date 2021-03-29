@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    redirect_to user_root_path unless @question.round.host == current_user
     if @question.save
       redirect_to edit_round_path(question_params[:round_id])
     else
