@@ -7,6 +7,7 @@ class Game < ApplicationRecord
 
   validates :quiz_id, presence: true
   validates :player_id, presence: true
+  validate :quiz_is_public
 
   def start
     if status == 'new'
@@ -47,6 +48,14 @@ class Game < ApplicationRecord
 
   def rounds_submitted
     game_rounds.count { |r| r.status == 'closed' }
+  end
+
+  private
+  
+  def quiz_is_public
+    if quiz.status != 'published'
+      errors.add(:quiz, 'is not public. Cannot create game')
+    end
   end
 
 end

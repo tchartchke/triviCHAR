@@ -12,7 +12,6 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new( game_params )
-    # TODO: eventually add things to check if game is public
     if @game.save
       redirect_to game_path(@game)
     else
