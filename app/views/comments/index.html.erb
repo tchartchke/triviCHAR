@@ -7,16 +7,16 @@
     </div>
     <div class="mt-10">
       <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-      <% @quiz.comments.each do |comment| %>
-        <div class="relative">
-          <dt>
-            <p class="ml-16 text-lg leading-6 font-medium text-gray-900"><%= comment.player.email %></p>
-          </dt>
-          <dd class="mt-2 ml-16 text-base text-gray-500">
-            <%= comment.comment %>
-          </dd>
-        </div>
-      <% end %>
+        <% @quiz.comments.each do |comment| %>
+          <div class="relative">
+            <dt>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900"><%= comment.player.email %></p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">
+              <%= comment.comment %>
+            </dd>
+          </div>
+        <% end %>
       </dl>
     </div>
   </div>
