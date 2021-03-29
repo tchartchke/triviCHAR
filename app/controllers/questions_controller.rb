@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def edit
     @round = Round.find(params[:round_id])
+    redirect_to user_root_path unless @round.host == current_user
     @question = Question.find(params[:id])
     @question.build_answer if @question.answer.nil?
   end
