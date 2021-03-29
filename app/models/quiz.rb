@@ -38,7 +38,7 @@ class Quiz < ApplicationRecord
       rounds.each do |round|
         if round.questions.count.positive?
           round.questions.each do |question|
-            return true unless question.answer.nil?
+            return false if question.answer.blank? || question.answer.nil? 
           end
         end
       end
