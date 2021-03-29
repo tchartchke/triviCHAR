@@ -1,6 +1,5 @@
 class QuizzesController < ApplicationController
   before_action :authenticate_user!
-  before_action :object_host, only: [:show, :destroy, :publish]
 
 
   def index
@@ -9,6 +8,7 @@ class QuizzesController < ApplicationController
   
   def show
     @quiz = Quiz.find(params[:id])
+    redirect_to user_root_path unless @quiz.host == current_user
     @round = Round.new(quiz: @quiz)
   end
 
@@ -27,10 +27,12 @@ class QuizzesController < ApplicationController
 
   def edit
     @quiz = Quiz.find(params[:id])
+    redirect_to user_root_path unless @quiz.host == current_user
   end
 
   def update
     @quiz = Quiz.find(params[:id])
+    redirect_to user_root_path unless @quiz.host == current_user
     if @quiz.update(quiz_params)
       redirect_to quiz_path(@quiz)
     else
@@ -39,8 +41,8 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
-    #TODO:Ask for verification and propogate delete
     @quiz = Quiz.find(params[:id])
+    redirect_to user_root_path unless @quiz.host == current_user
     @quiz.destroy
     redirect_to quizzes_path
   end
@@ -52,11 +54,11 @@ class QuizzesController < ApplicationController
     else
       @quizzes = Quiz.published
     end
-
   end
 
   def published
     @quiz = Quiz.find(params[:id])
+    redirect_to user_root_path unless @quiz.host == current_user
   end
 
   def publish
@@ -64,9 +66,9 @@ class QuizzesController < ApplicationController
     if @quiz.publish
       redirect_to quizzes_path
     else
-    @round = Round.new(quiz: @quiz)
-    @msg = 'Unable to publish quiz. Please verify all rounds and questions have answers.'
-    render :show
+      @round = Round.new(quiz: @quiz)
+      @msg = 'Unable to publish quiz. Please verify all rounds and questions have answers.'
+      render :show
     end
   end
 
@@ -75,10 +77,4 @@ class QuizzesController < ApplicationController
   def quiz_params
     params.require(:quiz).permit(:title, :host_id)
   end 
-
-  def object_host
-    unless current_user == Quiz.find(params[:id]).host
-      redirect_to user_root_path
-    end
-  end
 end
