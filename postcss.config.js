@@ -11,7 +11,7 @@ module.exports = {
     require('postcss-import'),
     require('tailwindcss/colors'),
     require('postcss-flexbugs-fixes'),
-    require("autoprefixer"),
+    // require("autoprefixer"),
     require('postcss-preset-env')({
       autoprefixer: {
         flexbox: 'no-2009'
