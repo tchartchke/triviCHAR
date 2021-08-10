@@ -17,7 +17,6 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^4.0.3",
     "postcss": "^8.3.6",
     "webpack-dev-server": "^3.11.2"
   }
