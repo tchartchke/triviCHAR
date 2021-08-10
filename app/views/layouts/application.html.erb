@@ -10,6 +10,27 @@
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
   </head>
   <body class="bg-gray-50">
+  <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '364138218590533',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
     <nav class="bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
@@ -51,6 +72,7 @@
     </div>
   </nav>
   <%= yield %>
+  
   </body>
   <footer>
   </footer>
