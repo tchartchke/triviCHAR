@@ -9,7 +9,7 @@ module.exports = {
   plugins: [
     require('tailwindcss')("./app/javascript/stylesheets/tailwind.config.js"),
     require('postcss-import'),
-    // require('tailwindcss/colors'),
+    require('tailwindcss/colors'),
     require('postcss-flexbugs-fixes'),
     require("autoprefixer"),
     require('postcss-preset-env')({
